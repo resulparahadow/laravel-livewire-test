@@ -35,4 +35,6 @@ return [
         ],
     ],
 
+    'rocket_api_key' => env('ROCKET_API_KEY', 'hq0vDOsffAd5wgF78_9mIg'),
+
 ];

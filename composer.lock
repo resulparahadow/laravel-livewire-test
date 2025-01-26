@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6b49d9e1adf8e7e3b0d57e1cdc1197ff",
+    "content-hash": "d2b1ab995716459deb4bdf1e4541b1e9",
     "packages": [
         {
             "name": "brick/math",
@@ -3374,6 +3374,46 @@
                 }
             ],
             "time": "2024-04-27T21:32:50+00:00"
+        },
+        {
+            "name": "rocketapi/rocketapi",
+            "version": "v1.0.10",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/rocketapi-io/rocketapi-php.git",
+                "reference": "841fb3ef268a85609e8baaa9db5b1cd9e3a2541e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/rocketapi-io/rocketapi-php/zipball/841fb3ef268a85609e8baaa9db5b1cd9e3a2541e",
+                "reference": "841fb3ef268a85609e8baaa9db5b1cd9e3a2541e",
+                "shasum": ""
+            },
+            "require": {
+                "ext-curl": "*",
+                "ext-json": "*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "RocketAPI\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "RocketAPI"
+                }
+            ],
+            "description": "RocketAPI PHP SDK",
+            "support": {
+                "issues": "https://github.com/rocketapi-io/rocketapi-php/issues",
+                "source": "https://github.com/rocketapi-io/rocketapi-php/tree/v1.0.10"
+            },
+            "time": "2024-12-11T17:05:03+00:00"
         },
         {
             "name": "symfony/clock",

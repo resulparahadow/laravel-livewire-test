@@ -6,6 +6,7 @@ use Livewire\Component;
 use Livewire\Attributes\Validate;
 use Livewire\WithFileUploads;
 use App\Models\Post;
+use App\Services\InstagramApi;
 
 class PostScheduleForm extends Component
 {
@@ -20,6 +21,8 @@ class PostScheduleForm extends Component
     #[Validate('required|file|max:10240')]
     public $file;
 
+    public $accounts;
+
     public function save()
     {
         $this->validate();
@@ -33,6 +36,12 @@ class PostScheduleForm extends Component
         ]);
 
         session()->flash('success', 'Post successfully updated.');
+    }
+
+    public function mount(){
+        $instagramApi = new InstagramApi();
+
+        $this->accounts = $instagramApi->searchAccounts('a');
     }
 
     public function render()
