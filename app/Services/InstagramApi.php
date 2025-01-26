@@ -19,7 +19,7 @@ class InstagramApi
                 'full_name' => 'resul',
             ]
         ]];
-        return $data;
+
         try {
             $data = $this->api->searchUsers($q);
         } catch (\Throwable $th) {
