@@ -1,5 +1,5 @@
 <div>
-    <div class="flex items-center justify-center p-6">
+    <div class="flex min-h-screen items-center justify-center p-6">
         <div class="mx-auto flex flex-col sm:w-full lg:max-w-3xl">
             <div class="text-3xl font-bold">Post Scheduler form</div>
             <div id="flash-message"
@@ -22,17 +22,23 @@
                 <div class="mb-6">
                     <label for="accounts" class="mb-2 block text-sm font-medium text-gray-900 dark:text-white">Select an
                         Account</label>
-                    <select id="accounts"
+                    <select id="accounts" wire:model="account_id"
                         class="mb-6 block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500">
                         <option selected></option>
                         @foreach ($accounts['users'] as $account)
                             <option wire:key="{{ $account['pk'] }}" value="US">{{ $account['full_name'] }}</option>
                         @endforeach
                     </select>
+                    @error('account_id')
+                        <span class="mt-2 text-sm text-red-600 dark:text-red-500">{{ $message }}</span>
+                    @enderror
                 </div>
                 <div class="mb-6">
-                    <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="file">Select File</label>
-                    <input  wire:model="file" class="block w-full text-sm text-gray-900 p-2.5 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" id="file" type="file" />
+                    <label class="mb-2 block text-sm font-medium text-gray-900 dark:text-white" for="file">Select
+                        File</label>
+                    <input wire:model="file"
+                        class="block w-full cursor-pointer rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:outline-none dark:border-gray-600 dark:bg-gray-700 dark:text-gray-400 dark:placeholder-gray-400"
+                        id="file" type="file" />
                     @error('file')
                         <span class="mt-2 text-sm text-red-600 dark:text-red-500">{{ $message }}</span>
                     @enderror
@@ -51,6 +57,7 @@
                     Schedule Post
                 </button>
             </form>
+            <a class="mt-6 text-2xl text-blue-500 decoration-current" href="{{ route('posts') }}">List posts</a>
         </div>
     </div>
 </div>

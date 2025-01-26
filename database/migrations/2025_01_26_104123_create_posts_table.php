@@ -13,8 +13,10 @@ return new class extends Migration
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
             $table->text('content');
             $table->string('file', 255);
+            $table->string('account_id', 255);
             $table->timestamp('schedule_time');
             $table->timestamps();
         });

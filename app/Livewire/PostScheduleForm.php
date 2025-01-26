@@ -2,11 +2,13 @@
 
 namespace App\Livewire;
 
+use App\Mail\VerificationMail;
 use Livewire\Component;
 use Livewire\Attributes\Validate;
 use Livewire\WithFileUploads;
-use App\Models\Post;
+use App\Models\User;
 use App\Services\InstagramApi;
+use Illuminate\Support\Facades\Mail;
 
 class PostScheduleForm extends Component
 {
@@ -21,6 +23,9 @@ class PostScheduleForm extends Component
     #[Validate('required|file|max:10240')]
     public $file;
 
+    #[Validate('required')]
+    public $account_id;
+
     public $accounts;
 
     public function save()
@@ -29,18 +34,23 @@ class PostScheduleForm extends Component
 
         $filePath = $this->file->store(path: 'files');
 
-        Post::create([
+        $user = User::first();
+
+        $user->posts()->create([
             'content' => $this->content,
             'file' => $filePath,
             'schedule_time' => $this->schedule_time,
+            'account_id' => $this->account_id,
         ]);
 
-        session()->flash('success', 'Post successfully updated.');
+        Mail::to($user->email)->send(new VerificationMail());
+
+        session()->flash('success', 'Post successfully created!');
+
+        return $this->redirect('/');
     }
 
-    public function mount(){
-        $instagramApi = new InstagramApi();
-
+    public function mount(InstagramApi $instagramApi){
         $this->accounts = $instagramApi->searchAccounts('a');
     }
 
