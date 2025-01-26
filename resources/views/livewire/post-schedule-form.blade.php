@@ -46,7 +46,8 @@
 
                 <div class="mb-6">
                     <label for="schedule_time" class="block font-medium">Date & Time</label>
-                    <input type="datetime-local" id="schedule_time" wire:model="schedule_time" min=""
+                    <input type="datetime-local" id="schedule_time" wire:model="schedule_time"
+                        min="{{ now()->format('Y-m-d H:i') }}"
                         class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500">
                     @error('schedule_time')
                         <span class="text-red-500">{{ $message }}</span>
@@ -57,7 +58,8 @@
                     Schedule Post
                 </button>
             </form>
-            <a class="mt-6 text-2xl text-blue-500 decoration-current" href="{{ route('posts') }}">List posts</a>
+            <a class="mt-6 text-2xl text-blue-500 decoration-blue-500 decoration-solid" href="{{ route('posts') }}">List
+                posts</a>
         </div>
     </div>
 </div>

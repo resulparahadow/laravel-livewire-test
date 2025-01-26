@@ -17,7 +17,7 @@ class PostScheduleForm extends Component
     #[Validate('required')]
     public $content = '';
 
-    #[Validate('required')]
+    #[Validate('required|date')]
     public $schedule_time = '';
 
     #[Validate('required|file|max:10240')]
@@ -51,6 +51,7 @@ class PostScheduleForm extends Component
     }
 
     public function mount(InstagramApi $instagramApi){
+        // this 'a' is for testing purpose, it will be fetched depending on user input
         $this->accounts = $instagramApi->searchAccounts('a');
     }
 

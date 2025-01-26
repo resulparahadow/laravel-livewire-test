@@ -10,9 +10,9 @@
         @livewireStyles
     </head>
 
-    <body>
+    <body class="bg-white">
         <div class="mx-auto max-w-screen-xl">
-            <div class="flex justify-center">
+            <div class="flex justify-center p-2">
                 @include('components.partials.messages')
             </div>
             {{ $slot }}

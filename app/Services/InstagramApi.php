@@ -8,7 +8,7 @@ class InstagramApi
 {
     protected $api;
 
-    function __construct(){
+    public function __construct(){
         $this->api = new \RocketAPI\InstagramAPI(config('services.rocket_api_key'));
     }
 
